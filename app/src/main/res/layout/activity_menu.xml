@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/stars"
+    android:orientation="vertical"
+    tools:context=".MenuActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="411dp"
+            android:layout_height="172dp"
+            android:layout_centerHorizontal="true"
+            android:paddingHorizontal="0dp"
+            android:paddingTop="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/logo_white"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteY="37dp" />
+
+        <TextView
+            android:id="@+id/header_text"
+            android:layout_width="match_parent"
+            android:layout_height="124dp"
+            android:layout_marginStart="30dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:text="@string/welcome"
+            android:textSize="22sp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="30dp"
+            android:paddingTop="40dp"
+            tools:ignore="MissingConstraints" />
+
+        <android.widget.Button
+            android:id="@+id/button_get_location"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/button_design_round"
+            android:paddingTop="5dp"
+            android:text="@string/check_location"
+            android:textColor="@color/white"
+            android:textStyle="italic"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="30dp"/>
+
+        <android.widget.Button
+            android:id="@+id/button_saved_locations"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/button_design_round"
+            android:paddingTop="5dp"
+            android:text="@string/saved_locations"
+            android:textColor="@color/white"
+            android:textStyle="italic"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="30dp"/>
+
+        <android.widget.Button
+            android:id="@+id/button_about_ssi"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/button_design_round"
+            android:paddingTop="5dp"
+            android:text="@string/about_iss"
+            android:textColor="@color/white"
+            android:textStyle="italic"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="30dp"/>
+
+
+        <android.widget.Button
+            android:id="@+id/button_searching_history"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/button_design_round"
+            android:paddingTop="5dp"
+            android:text="@string/searching_history"
+            android:textColor="@color/white"
+            android:textStyle="italic"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="30dp"/>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

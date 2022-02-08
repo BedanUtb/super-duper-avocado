@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">bedanova_PMA_project</string>
+    <string name="welcome">Welcome to ISS locator app</string>
+    <string name="username">bedanova_PMA_project</string>
+    <string name="password">bedanova_PMA_project</string>
+    <string name="lastlog">bedanova_PMA_project</string>
+    <string name="login">Login</string>
+    <string name="create">Create</string>
+    <string name="register">Register</string>
+
+    <string name="check_location">Check Location</string>
+    <string name="saved_locations">Saved Locations</string>
+    <string name="about_iss">About ISS</string>
+    <string name="searching_history">Searching History</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="saved_header">Your saved locations</string>
+    <string name="about_header">What to know about ISS</string>
+
+    <string name="api_map">rEEGLpEwYw90yRdoSPKx8hvb-i9DcKPwdzxCjWiKazUX1gtFX2BYRECKOgj64gi0Rgcb0-3ieEKOadQIK5mxAg</string>
+    <string name="api_map_key">AIzaSyBKg1YPyUnruZiVdloc-jR1HQw-7lLgick</string>
+    <string name="API_KEY">AIzaSyAy5fATemK7UjMLNQbUorHrZSMP9ZfamXY</string>
+
+</resources>

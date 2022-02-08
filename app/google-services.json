@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "256021996814",
+    "project_id": "pma-project-300810",
+    "storage_bucket": "pma-project-300810.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:256021996814:android:cfebf6ca1e97c3940be35f",
+        "android_client_info": {
+          "package_name": "com.uni.bedanova_pma_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "256021996814-b7e2mralc3tu8v79fk8thl109svbqalc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1WcukMHg4eketqw_vQ7vFmZVEKRpk6xE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "256021996814-b7e2mralc3tu8v79fk8thl109svbqalc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

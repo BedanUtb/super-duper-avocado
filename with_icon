@@ -1,0 +1,186 @@
+package com.uni.bedanova_pma_project
+
+
+import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.android.volley.Request
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
+import org.json.JSONArray
+import org.json.JSONObject
+
+
+class GetLocationActivity : AppCompatActivity(), OnMapReadyCallback {
+
+    //lateinit var client : FusedLocationProviderClient
+
+// new working with icon
+
+    var mGoogleMap: GoogleMap? = null
+    //var iss_latitude : Double? = null
+    //var iss_longitude : Double? = null
+    var iss_latitude :Double? = 40.730610
+    var iss_longitude :Double? = -73.935242
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_get_location)
+
+        Log.i("Recieved: ", iss_latitude.toString())
+
+        val url = "http://api.open-notify.org/iss-now.json"
+        val url2 = "http://raw.githubusercontent.com/pdichone/UIUX-Android-Course/master/Quotes.json%20"
+
+
+        val button_back = findViewById<Button>(R.id.button_back)
+        button_back.setOnClickListener{
+            onBackPressed()
+            Toast.makeText(this, "Clicked.", Toast.LENGTH_LONG).show()
+            //finish()
+        }
+        val button_save = findViewById<Button>(R.id.button_save)
+        button_save.setOnClickListener{
+
+        }
+
+        /*val button_refresh = findViewById<Button>(R.id.button_refresh)
+        button_save.setOnClickListener{
+            getData()
+        }*/
+
+        val button_show_map = findViewById<Button>(R.id.button_show_map)
+        button_show_map.setOnClickListener{
+            //val intent = Intent(this, MapsFragment::class.java)
+            //GoogleMap map = findFragmentById(R.id.mapview) as SupportMapFragment
+            //onMapReady()
+            //startActivity(intent)
+        }
+
+
+        // getData()
+        val mapFragment = supportFragmentManager.findFragmentById(R.id.mapview) as SupportMapFragment
+        mapFragment.getMapAsync(this)
+
+        //client = LocationServices.getFusedLocationProviderClient(this)
+        //
+
+
+
+
+
+    }
+
+    override fun onMapReady(googlemap: GoogleMap?) {
+        mGoogleMap = googlemap
+
+        val mapFragment = supportFragmentManager.findFragmentById(R.id.mapview) as SupportMapFragment
+
+
+        // val mapMap = supportFragmentManager.findFragmentById(R.id.mapView) as SupportMapFragment
+        //val map =mapFragment
+
+        //val map = googlemap
+        // final GoogleMap googleMap = mMapView.getMap();
+        //googleMap.setMyLocationEnabled(true);
+        //ava
+
+        // val latitude :Double? = 40.730610
+        //val longitude :Double? = -73.935242
+        val latitude :Double? = iss_latitude
+        val longitude :Double? = iss_longitude
+        val position = LatLng(latitude!!, longitude!!)
+
+        mGoogleMap!!.moveCamera(CameraUpdateFactory.newLatLng(position))
+        /*val cam_position :CameraPosition = mGoogleMap.cameraPosition*/
+        //Toast.makeText(this, "Cam position : " + cam_position, Toast.LENGTH_LONG).show()
+        //map!!.animateCamera(CameraUpdateFactory.zoomTo(11f))
+        //mapFragment.getMapAsync { map }
+        // map.animateCamera(CameraUpdateFactory.newLatLngZoom(position, 17F));
+        mGoogleMap?.addMarker(MarkerOptions().position(position).title("My Name"))
+
+
+        Toast.makeText(
+                this,
+                "My Location: " + latitude.toString() + "," + longitude.toString(),
+                Toast.LENGTH_LONG
+        ).show()
+    }
+
+
+
+    fun getData(v: View?) {
+        //fun getData() {
+        val textView = findViewById<View>(R.id.text_header) as TextView
+        var reply : String = "" // try
+        // Instantiate the RequestQueue.
+        val queue = Volley.newRequestQueue(this)
+        val url = "http://api.open-notify.org/iss-now.json"
+
+        // Request a string response from the provided URL.
+        val stringRequest = StringRequest(
+                Request.Method.GET, url,
+                //Response.Listener<String> { response ->
+                { response -> // Display result of the response to string.
+
+                    val jresponse = JSONObject(response.toString())
+
+                    val pos = jresponse.getString("iss_position")
+                    val posit = JSONObject(pos.toString())
+                    val lat = posit.getString("latitude")
+                    val lon = posit.getString("longitude")
+                    val time = jresponse.getString("timestamp")
+
+                    iss_latitude = lat.toDouble()
+                    iss_longitude = lon.toDouble()
+
+                    val position = LatLng(iss_latitude!!, iss_longitude!!)
+                    if (mGoogleMap != null) { //prevent crashing if the map doesn't exist yet (eg. on starting activity)
+                        //
+                        //
+
+
+                        mGoogleMap?.addMarker(
+                                //BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher)
+
+                                MarkerOptions()
+                                        .position(position)
+                                        .title("Melbourne")
+                                        .snippet("Population: 4,137,400")
+                                        //.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+                                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher))
+                                //.icon(BitmapDescriptorFactory.fromBitmap(smallMarker))
+                                //MarkerOptions().position(position).title("My Name")
+                        )
+                        mGoogleMap!!.moveCamera(CameraUpdateFactory.newLatLng(position))
+                        // add markers from database to the map
+                    }
+
+                    Log.i("Recieved: ", response.toString())
+
+                    Log.i("pos: ", pos.toString() + "timestamp:" + time.toString())
+                    //Log.i("lat: ", jsonArray[0].toString() + jsonArray[1].toString())
+                    Log.i("lat: ", lat.toString() + "lon:" + lon.toString())
+                    textView.text = response.toString()
+                },
+                {
+                    Log.i("Error", "Did not work")
+                })
+
+        // Add the request to the RequestQueue.
+        queue.add(stringRequest)
+    }
+
+}
